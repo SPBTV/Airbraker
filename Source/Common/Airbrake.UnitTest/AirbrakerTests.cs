@@ -1,7 +1,7 @@
 ﻿using Airbraker.Data;
-using Airbraker.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Airbraker.UnitTests
@@ -33,7 +33,7 @@ namespace Airbraker.UnitTests
         [TestMethod]
         public async Task AirbreakerSendAsyncTest()
         {
-            Task<bool> sendTask = null;
+            Task<WebResponse> task = null;
             try
             {
                 var divResult = Divide(4, 2);
@@ -44,10 +44,17 @@ namespace Airbraker.UnitTests
             }
             catch (Exception ex)
             {
-                sendTask = ex.AirbrakeAsync();
+                task = ex.AirbrakeAsync();
             }
-            var result = await sendTask; // Make sure that the airbrake notice was sent.
-            Assert.IsTrue(result);
+            try
+            {
+                await task; // Throws Unauthorized due to invalid api key.
+            }
+            catch (WebException ex)
+            {
+                var response = (HttpWebResponse)ex.Response;
+                Assert.IsTrue(response.StatusCode == HttpStatusCode.Unauthorized);
+            }
         }
 
         private static int Divide(int a, int b)

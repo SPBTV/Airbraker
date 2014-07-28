@@ -14,7 +14,7 @@ namespace Airbraker
         private readonly Regex _regex;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="RegexStackTraceLineParser"/> class. Default regex expresion is set to: <![CDATA[ @"at (?<method>.*) in (?<file>.*):line (?<line>\d*)" ]]>
+        /// Creates a new instance of the <see cref="RegexStackTraceLineParser"/> class. Default regex expression is set to: <![CDATA[ @"at (?<method>.*) in (?<file>.*):line (?<line>\d*)" ]]>
         /// </summary>
         public RegexStackTraceLineParser()
         {

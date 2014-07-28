@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Airbraker
 {
     /// <summary>
-    /// Represents a atack trace parser
+    /// Represents a stack trace parser
     /// </summary>
     public interface IStackTraceParser
     {

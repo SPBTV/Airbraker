@@ -1,8 +1,6 @@
 ﻿using Airbraker.Data;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -15,7 +13,7 @@ namespace Airbraker
     {
         #region Fields
 
-        private static readonly object _syncRoot = new Object();
+        private static readonly object _lockObject = new Object();
         private AirbrakeConfig _config;
         private AirbrakeNotifier _notifier;
         private IStackTraceParser _stackParser;
@@ -36,7 +34,7 @@ namespace Airbraker
             {
                 if (_default == null)
                 {
-                    lock (_syncRoot)
+                    lock (_lockObject)
                     {
                         if (_default == null)
                         {
@@ -86,10 +84,9 @@ namespace Airbraker
         /// Sends an error tracking information to the server.
         /// </summary>
         /// <param name="exception">Exception containing the error information.</param>
-        /// <param name="traceLines">Additional trace lines.</param>
-        /// <returns>True if data was send successfully, otherwise false.</returns>
+        /// <param name="traceLine">Trace line where the exception has occurred.</param>
         /// <exception cref="InvalidOperationException">Thrown when the <see cref="AirbrakeClient"/> instance is not configured properly.</exception>
-        public async Task<bool> SendAsync(Exception exception, params AirbrakeTraceLine[] traceLines)
+        public Task<WebResponse> SendAsync(Exception exception, AirbrakeTraceLine traceLine)
         {
             if (_config == null || _notifier == null || _stackParser == null)
             {
@@ -102,31 +99,31 @@ namespace Airbraker
                 ApiKey = _config.ApiKey,
                 Notifier = _notifier,
                 ServerEnvironment = _environment,
-                Error = CreateAirbrakeError(exception, traceLines)
+                Error = CreateAirbrakeError(exception, traceLine)
             };
 
-            try
-            {
-                var response = await PostAsync(_config.ServerAddress, notice.ToArray());
-                return response.StatusCode == HttpStatusCode.OK;
-            }
-            catch (WebException)
-            {
-                return false;
-            }
+            var request = (HttpWebRequest)WebRequest.Create(_config.ServerAddress);
+            request.Accept = "text/xml";
+            request.ContentType = "text/xml";
+
+            return request.PostAsync(notice.ToArray());
         }
 
-        private AirbrakeError CreateAirbrakeError(Exception exception, params AirbrakeTraceLine[] traceLines)
+        private AirbrakeError CreateAirbrakeError(Exception exception, AirbrakeTraceLine traceLine)
         {
             if (exception == null)
             {
                 throw new ArgumentNullException("exception");
             }
             var lines = new List<AirbrakeTraceLine>();
-            if (traceLines != null && traceLines.Any())
+
+            // Add newest trace line on top of all.
+            if (traceLine != null)
             {
-                lines.AddRange(traceLines);
+                lines.Add(traceLine);
             }
+
+            // Parse the rest of the trace lines and append them to the data list.
             if (!String.IsNullOrWhiteSpace(exception.StackTrace))
             {
                 lines.AddRange(_stackParser.Parse(exception.StackTrace));
@@ -138,20 +135,6 @@ namespace Airbraker
                 TraceLines = lines.ToArray()
             };
             return error;
-        }
-
-        private static async Task<HttpWebResponse> PostAsync(Uri requestUri, byte[] content)
-        {
-            var request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Accept = "text/xml";
-            request.ContentType = "text/xml";
-            request.Method = "POST";
-
-            using (Stream stream = await request.GetRequestStreamAsync())
-            {
-                stream.Write(content, 0, content.Length);
-            }
-            return await request.GetResponseAsync() as HttpWebResponse;
         }
 
         #endregion
