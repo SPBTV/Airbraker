@@ -16,7 +16,6 @@ Install-Package Airbraker
 
 
 ##License
------------------------
 
 Copyright 2014 SPB TV AG
 
