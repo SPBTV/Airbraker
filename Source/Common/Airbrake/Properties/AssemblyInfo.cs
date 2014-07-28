@@ -2,7 +2,7 @@
 using System.Resources;
 
 [assembly: AssemblyTitle("Airbraker")]
-[assembly: AssemblyDescription("Aibrake error tracker")]
+[assembly: AssemblyDescription("Airbrake error tracker")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Airbrake")]
@@ -10,5 +10,5 @@ using System.Resources;
 [assembly: AssemblyTrademark("Airbraker")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
-[assembly: AssemblyVersion("2.3.0.1")]
-[assembly: AssemblyFileVersion("2.3.0.1")]
+[assembly: AssemblyVersion("2.3.0.4")]
+[assembly: AssemblyFileVersion("2.3.0.4")]

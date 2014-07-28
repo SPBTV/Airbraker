@@ -1,23 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
- <metadata>
-        <id>Airbraker</id>
-        <version>2.3.0.1</version>
-        <title>Airbraker</title>
-        <authors>Momchil Marinov</authors>
-        <owners>Momchil Marinov</owners>
-        <projectUrl>https://github.com/bagabont/Airbraker</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Airbrake error tracking client</description>
-        <summary />
-        <copyright>Momchil Marinov</copyright>
-        <tags>airbrake, airbraker, error tracking</tags>
-        <dependencies>
-            <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        </dependencies>
-    </metadata>
-    <files>
-        <file src="..\Source\Profile104\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl40+win+wp71\Airbraker.dll" />
-		<file src="..\Source\Profile344\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.dll" />
-    </files>
+	<metadata>
+		<id>Airbraker</id>
+		<version>2.3.0.4</version>
+		<title>Airbraker</title>
+		<authors>Momchil Marinov</authors>
+		<owners>Momchil Marinov</owners>
+		<projectUrl>https://github.com/bagabont/Airbraker</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Airbrake error tracking client</description>
+		<summary />
+		<copyright>Momchil Marinov</copyright>
+		<tags>airbrake, airbraker, error tracking</tags>
+		<dependencies>
+			<group targetFramework="portable-net403+sl40+wp71">			 
+				<dependency id="Microsoft.Bcl" version="1.1.9" />        
+			</group>
+			<group targetFramework="portable-net45+sl50+win+wpa81+wp80">			 
+			</group>				
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\Source\pcl-403\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net403+sl40+wp71\Airbraker.dll" />
+		<file src="..\Source\pcl-403\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net403+sl40+wp71\Airbraker.XML" />
+
+		<file src="..\Source\pcl-45\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.dll" />
+		<file src="..\Source\pcl-45\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.XML" />	
+	</files>
 </package>
