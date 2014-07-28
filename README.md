@@ -1,16 +1,17 @@
 #Airbraker
------------------------
+
 <img src="http://f.cl.ly/items/0L0G1z0E2A1P3H2O042F/dotnet%2009.19.32.jpg" width=800px>
 
+-----------------------
 
 ##Get it now! using NuGet
------------------------
+
 ```powershell
 Install-Package Airbraker
 ```
 
 ##Resources
------------------------
+
 - [Documentation](Docs)
 - [Airbrake Official Website](https://airbrake.io/)
 
