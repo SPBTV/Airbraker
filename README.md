@@ -12,3 +12,4 @@ Install-Package Airbraker
 Resources
 ---------
 - [Documentation](Docs)
+- [Airbrake Official Website](https://airbrake.io/)
