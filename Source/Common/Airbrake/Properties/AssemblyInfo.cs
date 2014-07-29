@@ -10,5 +10,5 @@ using System.Resources;
 [assembly: AssemblyTrademark("Airbraker")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
-[assembly: AssemblyVersion("2.3.0.4")]
-[assembly: AssemblyFileVersion("2.3.0.4")]
+[assembly: AssemblyVersion("2.3.0.5")]
+[assembly: AssemblyFileVersion("2.3.0.5")]

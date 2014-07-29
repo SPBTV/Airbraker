@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Airbraker</id>
-		<version>2.3.0.4</version>
+		<version>2.3.0.5</version>
 		<title>Airbraker</title>
 		<authors>Momchil Marinov</authors>
 		<owners>Momchil Marinov</owners>
-		<projectUrl>https://github.com/bagabont/Airbraker</projectUrl>
+		<projectUrl>https://github.com/spbtv/Airbraker</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Airbrake error tracking client</description>
 		<summary />
