@@ -21,10 +21,10 @@
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="..\Source\pcl-403\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net403+sl40+wp71\Airbraker.dll" />
-		<file src="..\Source\pcl-403\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net403+sl40+wp71\Airbraker.XML" />
+		<file src="..\Source\portable-net403+sl40+wp71\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net403+sl40+wp71\Airbraker.dll" />
+		<file src="..\Source\portable-net403+sl40+wp71\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net403+sl40+wp71\Airbraker.XML" />
 
-		<file src="..\Source\pcl-45\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.dll" />
-		<file src="..\Source\pcl-45\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.XML" />	
+		<file src="..\Source\portable-net45+sl50+win+wpa81+wp80\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.dll" />
+		<file src="..\Source\portable-net45+sl50+win+wpa81+wp80\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.XML" />	
 	</files>
 </package>
