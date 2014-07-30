@@ -1,8 +1,8 @@
-﻿using Airbraker.Data;
+﻿using System.Net;
+using Airbraker.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Net;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Airbraker.UnitTests
 {
@@ -23,38 +23,50 @@ namespace Airbraker.UnitTests
                 AppVersion = "1.0",
                 ProjectName = "Airbraker.UnitTests"
             };
-            var notifier = new AirbrakeNotifier("AirbreakerUnitTest", "1.0", "https://github.com/bagabont/airbraker");
 
-            // Configure airbreak.
-            _airbrake = AirbrakeClient.Default;
-            _airbrake.Configure(config, notifier);
+            // Initialize Airbrake client.
+            _airbrake = new AirbrakeClient(config);
         }
 
         [TestMethod]
-        public async Task AirbreakerSendAsyncTest()
+        public void SendToAirbrakeTest()
         {
-            Task<WebResponse> task = null;
+            var done = new ManualResetEvent(false);
+            HttpWebResponse response = null;
+            _airbrake.ReportSucceeded += (s, e) =>
+            {
+                response = e.Response;
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    Assert.Fail("Status code must be equal to HttpStatusCode.OK");
+                }
+                done.Set();
+            };
+
+            _airbrake.ReportFailed += (s, e) =>
+            {
+                response = e.Response;
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    Assert.Fail("Status code must NOT be equal to HttpStatusCode.OK");
+                }
+                done.Set();
+            };
+
             try
             {
                 var divResult = Divide(4, 2);
-
                 divResult = Divide(divResult, 0); // Divide by zero
-
                 Assert.Fail("Divide by zero did not throw an exception. Division result: {0}", divResult);
             }
             catch (Exception ex)
             {
-                task = ex.AirbrakeAsync();
+                // Try to send to airbrake server.
+                _airbrake.Send(ex);
             }
-            try
-            {
-                await task; // Throws Unauthorized due to invalid api key.
-            }
-            catch (WebException ex)
-            {
-                var response = (HttpWebResponse)ex.Response;
-                Assert.IsTrue(response.StatusCode == HttpStatusCode.Unauthorized);
-            }
+            // Wait 2 sec. to get the response.
+            done.WaitOne(2000);
+            Assert.IsTrue(response != null);
         }
 
         private static int Divide(int a, int b)

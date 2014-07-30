@@ -21,9 +21,16 @@ namespace Airbraker.UnitTests
                     Hostname = "youhost",
                     Project = "unit-test"
                 },
-                Error = new AirbrakeError()
+                Error = new AirbrakeError
+                {
+                    Class = "Runtime",
+                    Message = "Example message",
+                    TraceLines = new[]
+                    {
+                        new AirbrakeTraceLine("someMethod","someFile",0)
+                    }
+                }
             };
-
             var result = notice.ToArray();
             Assert.IsTrue(result.Length > 0, "Serialized notice data is empty.");
         }
