@@ -60,7 +60,12 @@ Using the client:
     }
 ```
 
-If you cannot access the ```chsarp [CallerMemberName]```, ```csharp [CallerFilePath]``` and ```csharp [CallerLineNumber]``` attribtues, then install the __Microsoft BCL Portability Pack__ package. 
+If you cannot access the 
+```chsarp [CallerMemberName]```
+```csharp [CallerFilePath]```
+```csharp [CallerLineNumber]``` 
+
+attribtues, then install the __Microsoft BCL Portability Pack__ package. 
 
 From NuGet:
 
