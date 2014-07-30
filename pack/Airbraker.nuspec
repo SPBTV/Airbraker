@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>Airbraker</id>
-		<version>2.3.0.5</version>
+		<version>2.3.0.6</version>
 		<title>Airbraker</title>
 		<authors>Momchil Marinov</authors>
 		<owners>Momchil Marinov</owners>
@@ -12,19 +12,13 @@
 		<summary />
 		<copyright>Momchil Marinov</copyright>
 		<tags>airbrake, airbraker, error tracking</tags>
-		<dependencies>
-			<group targetFramework="portable-net403+sl40+wp71">			 
-				<dependency id="Microsoft.Bcl" version="1.1.9" />        
-			</group>
-			<group targetFramework="portable-net45+sl50+win+wpa81+wp80">			 
-			</group>				
-		</dependencies>
+		<dependencies />						
 	</metadata>
 	<files>
-		<file src="..\Source\portable-net403+sl40+wp71\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net403+sl40+wp71\Airbraker.dll" />
-		<file src="..\Source\portable-net403+sl40+wp71\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net403+sl40+wp71\Airbraker.XML" />
+		<file src="..\Source\pcl.40\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net40+sl40+win+wp71\Airbraker.dll" />
+		<file src="..\Source\pcl.40\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net40+sl40+win+wp71\Airbraker.XML" />
 
-		<file src="..\Source\portable-net45+sl50+win+wpa81+wp80\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.dll" />
-		<file src="..\Source\portable-net45+sl50+win+wpa81+wp80\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.XML" />	
+		<file src="..\Source\pcl.45\Airbraker\bin\Release\Airbraker.dll" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.dll" />
+		<file src="..\Source\pcl.45\Airbraker\bin\Release\Airbraker.XML" target="lib\portable-net45+sl50+win+wpa81+wp80\Airbraker.XML" />	
 	</files>
 </package>

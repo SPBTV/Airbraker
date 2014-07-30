@@ -1,7 +1,6 @@
-﻿using System.Net;
-using Airbraker.Data;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net;
 using System.Threading;
 
 namespace Airbraker.UnitTests
@@ -10,7 +9,7 @@ namespace Airbraker.UnitTests
     public class AirbrakerTests
     {
         private AirbrakeClient _airbrake;
-        private const string ApiKey = "76fdb93ab2cf276ec080671a8b3d3866";
+        private const string ApiKey = "76fdb93ab2cf276ec080671a8b3d3866"; // Sample API Key. You can change it to a valid one.
 
         [TestInitialize]
         [TestMethod]
@@ -33,6 +32,7 @@ namespace Airbraker.UnitTests
         {
             var done = new ManualResetEvent(false);
             HttpWebResponse response = null;
+
             _airbrake.ReportSucceeded += (s, e) =>
             {
                 response = e.Response;

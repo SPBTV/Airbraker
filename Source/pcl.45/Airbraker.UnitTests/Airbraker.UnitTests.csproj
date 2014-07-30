@@ -53,22 +53,25 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\..\Common\Airbrake.UnitTest\AirbrakerTests.cs">
-      <Link>AirbrakerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Airbrake.UnitTest\ExceptionEx.cs">
-      <Link>ExceptionEx.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Airbrake.UnitTest\SerializationTests.cs">
-      <Link>SerializationTests.cs</Link>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Airbraker\Airbraker.csproj">
       <Project>{2f22145a-3c8c-4bad-ba10-8796196b7c54}</Project>
       <Name>Airbraker</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\AirbrakeClientEx.cs">
+      <Link>AirbrakeClientEx.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\AirbrakerTests.cs">
+      <Link>AirbrakerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\SerializationTests.cs">
+      <Link>SerializationTests.cs</Link>
+    </Compile>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -91,12 +94,7 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
+
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

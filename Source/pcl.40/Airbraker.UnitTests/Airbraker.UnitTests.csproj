@@ -54,22 +54,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\..\Common\Airbrake.UnitTest\AirbrakeClientEx.cs">
-      <Link>AirbrakeClientEx.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Airbrake.UnitTest\AirbrakerTests.cs">
-      <Link>AirbrakerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Common\Airbrake.UnitTest\SerializationTests.cs">
-      <Link>SerializationTests.cs</Link>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Airbraker\Airbraker.csproj">
       <Project>{e62e7b0b-c190-4f0c-afc2-fb05d6569b23}</Project>
       <Name>Airbraker</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\AirbrakeClientEx.cs">
+      <Link>AirbrakeClientEx.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\AirbrakerTests.cs">
+      <Link>AirbrakerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\Airbraker.UnitTest\SerializationTests.cs">
+      <Link>SerializationTests.cs</Link>
+    </Compile>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

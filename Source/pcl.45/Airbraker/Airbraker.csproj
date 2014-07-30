@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E62E7B0B-C190-4F0C-AFC2-FB05D6569B23}</ProjectGuid>
+    <ProjectGuid>{2F22145A-3C8C-4BAD-BA10-8796196B7C54}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Airbraker</RootNamespace>
     <AssemblyName>Airbraker</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile88</TargetFrameworkProfile>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile344</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -36,55 +37,55 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Airbraker.XML</DocumentationFile>
   </PropertyGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Compile Include="..\..\Common\Airbrake\AirbrakeClient.cs">
+    <Compile Include="..\..\Common\Airbraker\AirbrakeClient.cs">
       <Link>AirbrakeClient.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\AirbrakeConfig.cs">
+    <Compile Include="..\..\Common\Airbraker\AirbrakeConfig.cs">
       <Link>AirbrakeConfig.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeCurrentUser.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeCurrentUser.cs">
       <Link>Data\AirbrakeCurrentUser.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeError.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeError.cs">
       <Link>Data\AirbrakeError.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeNotice.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeNotice.cs">
       <Link>Data\AirbrakeNotice.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeNotifier.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeNotifier.cs">
       <Link>Data\AirbrakeNotifier.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeRequest.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeRequest.cs">
       <Link>Data\AirbrakeRequest.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeServerEnvironment.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeServerEnvironment.cs">
       <Link>Data\AirbrakeServerEnvironment.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeTraceLine.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeTraceLine.cs">
       <Link>Data\AirbrakeTraceLine.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Data\AirbrakeVar.cs">
+    <Compile Include="..\..\Common\Airbraker\Data\AirbrakeVar.cs">
       <Link>Data\AirbrakeVar.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\HttpWebRequestState.cs">
+    <Compile Include="..\..\Common\Airbraker\HttpWebRequestState.cs">
       <Link>HttpWebRequestState.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\IStackTraceParser.cs">
+    <Compile Include="..\..\Common\Airbraker\IStackTraceParser.cs">
       <Link>IStackTraceParser.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\Properties\AssemblyInfo.cs">
+    <Compile Include="..\..\Common\Airbraker\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\RegexStackTraceParser.cs">
+    <Compile Include="..\..\Common\Airbraker\RegexStackTraceParser.cs">
       <Link>RegexStackTraceParser.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Airbrake\ReportCompletedEventArgs.cs">
+    <Compile Include="..\..\Common\Airbraker\ReportCompletedEventArgs.cs">
       <Link>ReportCompletedEventArgs.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
