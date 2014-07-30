@@ -15,7 +15,7 @@ Syntax
 ------
 
 ```csharp
-publicclassAirbrakeClient
+public class AirbrakeClient
 ```
 
 The **AirbrakeClient** type exposes the following members.
