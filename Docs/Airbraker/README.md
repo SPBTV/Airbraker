@@ -1,9 +1,6 @@
 Airbraker Namespace
 ===================
 
-[Missing &lt;summary> documentation for "N:Airbraker"]
-
-
 
 Classes
 -------
