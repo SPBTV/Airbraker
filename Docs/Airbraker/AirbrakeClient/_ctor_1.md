@@ -1,6 +1,6 @@
-AirbrakeClientConfigure Method (AirbrakeConfig, AirbrakeNotifier)
-=================================================================
-Configures the [AirbrakeClient][1], using the [RegexStackTraceLineParser][2] parser.
+AirbrakeClient Constructor (AirbrakeConfig, AirbrakeNotifier)
+=============================================================
+Creates a new instance of the [AirbrakeClient][1] class, and configures it to use the [RegexStackTraceLineParser][2] parser.
 
 **Namespace:** [Airbraker][3]  
 **Assembly:**
@@ -9,7 +9,7 @@ Syntax
 ------
 
 ```csharp
-public void Configure(
+public AirbrakeClient(
 	AirbrakeConfig config,
 	AirbrakeNotifier notifier
 )

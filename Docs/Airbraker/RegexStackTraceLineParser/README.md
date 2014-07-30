@@ -24,10 +24,10 @@ The **RegexStackTraceLineParser** type exposes the following members.
 Constructors
 ------------
 
-Name                                  | Description                                                                                                                                                         
-------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-[RegexStackTraceLineParser][3]        | Creates a new instance of the **RegexStackTraceLineParser** class. Default regex expresion is set to: @"at (?&lt;method>.*) in (?&lt;file>.*):line (?&lt;line>\d*)" 
-[RegexStackTraceLineParser(Regex)][4] | Creates a new instance of the **RegexStackTraceLineParser** class.                                                                                                  
+Name                                  | Description                                                                                                                                                          
+------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+[RegexStackTraceLineParser][3]        | Creates a new instance of the **RegexStackTraceLineParser** class. Default regex expression is set to: @"at (?&lt;method>.*) in (?&lt;file>.*):line (?&lt;line>\d*)" 
+[RegexStackTraceLineParser(Regex)][4] | Creates a new instance of the **RegexStackTraceLineParser** class.                                                                                                   
 
 
 Methods

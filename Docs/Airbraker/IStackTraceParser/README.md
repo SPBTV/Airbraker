@@ -1,6 +1,6 @@
 IStackTraceParser Interface
 ===========================
-Represents a atack trace parser
+Represents a stack trace parser
 
 **Namespace:** [Airbraker][1]  
 **Assembly:**
