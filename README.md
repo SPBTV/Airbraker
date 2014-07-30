@@ -35,29 +35,29 @@ namespace Airbraker
 To configure the Airbrake client:
 
 ```csharp
-        var config = new AirbrakeConfig
-        {
-            ApiKey = "your-api-key",
-            Environment = "dev",
-            AppVersion = "1.0",
-            ProjectName = "Company.YourProjectName"
-        };
+var config = new AirbrakeConfig
+{
+    ApiKey = "your-api-key",
+    Environment = "dev",
+    AppVersion = "1.0",
+    ProjectName = "Company.YourProjectName"
+};
 
-        // Initialize Airbrake client.
-        _airbrake = new AirbrakeClient(config);
+// Initialize Airbrake client.
+_airbrake = new AirbrakeClient(config);
 ```
 
 Using the client:
 
 ```csharp
-    try
-    {
-        //Routine throws an exception
-    }
-    catch (Exception ex)
-    {
-        _airbrake.Send(ex);
-    }
+try
+{
+    //Routine throws an exception
+}
+catch (Exception ex)
+{
+    _airbrake.Send(ex);
+}
 ```
 
 If you cannot access the ___[CallerMemberName], [CallerFilePath] and [CallerLineNumber]___ attribtues, then install the __Microsoft BCL Portability Pack__ from NuGet:
