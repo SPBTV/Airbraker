@@ -60,10 +60,7 @@ Using the client:
     }
 ```
 
-If you cannot access the ___[CallerMemberName], [CallerFilePath] and [CallerLineNumber]___ attribtues, then install the __Microsoft BCL Portability Pack__ package. 
-
-From NuGet:
-
+If you cannot access the ___[CallerMemberName], [CallerFilePath] and [CallerLineNumber]___ attribtues, then install the __Microsoft BCL Portability Pack__ from NuGet:
 ```powershell
 PM> Install-Package Microsoft.Bcl
 ```
