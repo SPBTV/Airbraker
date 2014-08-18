@@ -137,9 +137,10 @@ namespace Airbraker
         /// <param name="exception">Exception containing the error information.</param>
         /// <param name="method">Name of the method in which the error occurred.</param>
         /// <param name="file">File in which the error occurred.</param>
-        /// <param name="lineNumber">Number of the line on which the error occurred.</param>        
+        /// <param name="lineNumber">Number of the line on which the error occurred.</param>
+        /// <param name="request">Request that caused the error.</param>
         /// <exception cref="InvalidOperationException">Thrown when the <see cref="AirbrakeClient"/> instance is not configured properly.</exception>
-        public void Send(Exception exception, string method, string file, int lineNumber)
+        public void Send(Exception exception, string method, string file, int lineNumber, AirbrakeRequest request = null)
         {
             if (_config == null || _notifier == null || _stackParser == null)
             {
@@ -151,6 +152,7 @@ namespace Airbraker
                 ApiKey = _config.ApiKey,
                 Notifier = _notifier,
                 ServerEnvironment = _environment,
+                Request = request,
                 Error = CreateAirbrakeError(exception, method, file, lineNumber)
             };
             PostAsync(_config.ServerAddress, notice.ToArray());
@@ -200,9 +202,8 @@ namespace Airbraker
         private AirbrakeError CreateAirbrakeError(Exception exception, string method, string file, int lineNumber)
         {
             if (exception == null)
-            {
                 throw new ArgumentNullException("exception");
-            }
+
             var lines = new List<AirbrakeTraceLine>
             {
                 new AirbrakeTraceLine(method, file, lineNumber)
@@ -210,9 +211,8 @@ namespace Airbraker
 
             // Parse the rest of the trace lines and append them to the data list.
             if (!String.IsNullOrWhiteSpace(exception.StackTrace))
-            {
                 lines.AddRange(_stackParser.Parse(exception.StackTrace));
-            }
+
             var error = new AirbrakeError
             {
                 Class = exception.GetType().FullName,
