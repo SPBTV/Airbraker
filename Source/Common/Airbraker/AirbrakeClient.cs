@@ -138,9 +138,8 @@ namespace Airbraker
         /// <param name="method">Name of the method in which the error occurred.</param>
         /// <param name="file">File in which the error occurred.</param>
         /// <param name="lineNumber">Number of the line on which the error occurred.</param>
-        /// <param name="request">Request that caused the error.</param>
         /// <exception cref="InvalidOperationException">Thrown when the <see cref="AirbrakeClient"/> instance is not configured properly.</exception>
-        public void Send(Exception exception, string method, string file, int lineNumber, AirbrakeRequest request = null)
+        public void Send(Exception exception, string method, string file, int lineNumber)
         {
             if (_config == null || _notifier == null || _stackParser == null)
             {
@@ -152,11 +151,27 @@ namespace Airbraker
                 ApiKey = _config.ApiKey,
                 Notifier = _notifier,
                 ServerEnvironment = _environment,
-                Request = request,
                 Error = CreateAirbrakeError(exception, method, file, lineNumber)
             };
+            Send(notice);
+        }
+
+        /// <summary>
+        /// Sends an error tracking information to the server.
+        /// </summary>
+        /// <param name="notice">Notice to be send.</param>
+        /// <exception cref="InvalidOperationException">Thrown when the <see cref="AirbrakeClient"/> instance is not configured properly.</exception>
+        public void Send(AirbrakeNotice notice)
+        {
+            if (notice == null)
+                throw new ArgumentNullException("notice");
+
+            if (_config == null || _notifier == null || _stackParser == null)
+                throw new InvalidOperationException("Sending error notice to server failed. Configure Airbraker first.");
+
             PostAsync(_config.ServerAddress, notice.ToArray());
         }
+
 
         private void PostAsync(Uri requestUri, byte[] content)
         {
