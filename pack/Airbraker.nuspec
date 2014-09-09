@@ -5,12 +5,13 @@
 		<version>2.3.0.6</version>
 		<title>Airbraker</title>
 		<authors>Momchil Marinov</authors>
-		<owners>Momchil Marinov</owners>
+		<owners>SPB TV AG</owners>
 		<projectUrl>https://github.com/spbtv/Airbraker</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Airbrake error tracking client</description>
+		<licenseUrl>https://github.com/SPBTV/Airbraker/blob/master/LICENSE</licenseUrl>
 		<summary />
-		<copyright>Momchil Marinov</copyright>
+		<copyright>Copyright 2014 SPB TV AG</copyright>
 		<tags>airbrake, airbraker, error tracking</tags>
 		<dependencies />						
 	</metadata>
